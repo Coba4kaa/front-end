@@ -5,89 +5,78 @@
     <meta name="keywords" content="интернет-магазин, ножи, продажа ножей, купить нож">
     <meta name="description" content="Интернет-магазин по продаже ножей. Широкий ассортимент и отличные цены.">
     <title>Магазин финок НКВД</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
 <!-- Шапка сайта -->
-<header>
-    <h1>Добро пожаловать в наш магазин финок НКВД</h1>
-    <nav>
+<header class="header">
+    <h1 class="header__title">Магазин финок НКВД</h1>
+    <nav class="header__nav">
         <ul>
             <li><a href="index.html">Главная</a></li>
             <li><a href="catalog.html">Каталог</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
         </ul>
     </nav>
 </header>
 
 <!-- Основная часть -->
-<main>
-    <!-- Секция товаров -->
-    <section>
-        <h2>Наши товары</h2>
-        <p>В нашем магазине вы найдете <strong>лучшие ножи</strong> от мировых производителей. Мы всегда стараемся
-            предложить вам <em>высокое качество</em> по доступным ценам.</p>
-    </section>
-
+<main class="main">
     <!-- Категории ножей -->
-    <section>
-        <h3>Категории ножей</h3>
+    <section class="main__category">
+        <h3 class="main__category-title">Категории ножей</h3>
         <ul>
-            <li>Охотничьи ножи</li>
-            <li>Тактические ножи</li>
-            <li>Кухонные ножи</li>
-            <li>Складные ножи</li>
+            <li><a href="#">Охотничьи ножи</a></li>
+            <li><a href="#">Тактические ножи</a></li>
+            <li><a href="#">Кухонные ножи</a></li>
+            <li><a href="#">Складные ножи</a></li>
         </ul>
     </section>
 
+    <!-- Секция товаров -->
+    <section class="main__product">
+        <h2>Наши товары</h2>
+        <p>В нашем магазине вы найдете <strong>лучшие ножи</strong> от мировых производителей. Мы всегда стараемся
+            предложить вам <em>высокое качество</em> по доступным ценам.</p>
+        <img class="main__product-image" src="/images/knife.webp" alt="Нож">
+    </section>
+
+    <!-- Преимущества магазина -->
+    <article class="article__advantages">
+        <h4>Почему выбирают нас?</h4>
+        <p>Мы предлагаем ножи с <strong>лучшими</strong> характеристиками. Наш ассортимент включает в себя не только
+            устаревшие модели, но и <ins>новейшие разработки</ins> в мире ножей.</p>
+    </article>
+
     <!-- Отзывы покупателей -->
-    <aside>
+    <aside class="aside__reviews">
         <h4>Отзывы</h4>
-        <blockquote>Отличный магазин, очень качественный нож пришел. <del>За такой убить можно.</del> — Иван</blockquote>
+        <blockquote>Отличный магазин, очень качественный нож пришел. — Иван</blockquote>
         <blockquote>Я приобрела кухонный набор ножей, и он просто превосходен! — Анна</blockquote>
     </aside>
 
-    <!-- Преимущества магазина -->
-    <article>
-        <h4>Почему выбирают нас?</h4>
-        <p>Мы предлагаем ножи с <strong>лучшими</strong> характеристиками. Наш ассортимент включает в себя не только устаревшие модели, но и
-            <ins>новейшие разработки</ins>
-            в мире ножей.
-        </p>
-    </article>
-
     <!-- Карта -->
-    <section>
+    <section class="main__map">
         <h4>Как до нас добраться:</h4>
         <pre>
                 +----+
                /  #  |  #    +--> тут
               /   #  |  #   /
                      +-----+
-            </pre>
-    </section>
-
-    <!-- Код -->
-    <section>
-        <h4>Пример кода обработки товаров</h4>
-        <pre>
-            <code>
-            for (int i = 0; i < knives.length; i++) {
-                System.out.println(knives[i].price += 5000);
-            }
-            </code>
         </pre>
     </section>
 
-    <!-- Цитата и формула успеха -->
-    <section>
-        <q>Наш успех зависит от вашей удовлетворенности!</q>
-        <cite> - Сократ</cite>
-        <p>Формула успеха: <em>E</em>=<em>mc</em><sup>2</sup></p>
+    <!-- Контакты -->
+    <section class="main__contacts">
+        <h4 class="main__contacts-title">Как с нами связаться</h4>
+        <ul>
+            <li>Телеграмм: @FinkiNKVD</li>
+            <li>Номер телефона: 19-37</li>
+        </ul>
     </section>
 </main>
 
 <!-- Подвал -->
-<footer>
+<footer class="footer">
     <p>&copy; 2024 Магазин финок НКВД. Все права защищены.</p>
 </footer>
 </body>
