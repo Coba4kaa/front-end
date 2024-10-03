@@ -1,6 +1,8 @@
 /* Общие стили */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
 body {
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: "Russo One", sans-serif;
     background-color: #f9f9f9;
     margin: 0;
     padding: 0;
@@ -17,6 +19,7 @@ body {
 
 .header__nav ul {
     list-style: none;
+    line-height: normal;
     padding: 0;
     margin: 10px 0 0;
 }
@@ -72,10 +75,14 @@ ul {
 
 .main__product {
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 20px;
+}
+
+.main__product span{
+    font-style: italic;
 }
 
 .main__product-image {
@@ -83,7 +90,7 @@ ul {
     margin-top: 10px;
     max-width: 100%;
     height: auto;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -91,7 +98,7 @@ ul {
 /* Преимущества */
 .article__advantages {
     background-color: #f4f4f4;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 20px;
@@ -109,6 +116,11 @@ ul {
     margin-bottom: 20px;
 }
 
+.aside__reviews span{
+    text-decoration: underline red 3px;
+    text-transform: uppercase;
+}
+
 /* Карта */
 .main__map {
     background-color: #eee;
@@ -117,10 +129,15 @@ ul {
     margin-bottom: 20px;
 }
 
+.main__map pre {
+    font-weight: bolder;
+    font-size: 15px;
+}
+
 /* Контакты */
 .main__contacts {
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     padding: 10px;
     border-radius: 20px;
 }
