@@ -112,13 +112,15 @@ body {
 /* Адаптивная таблица */
 .table {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    width: 100%;
 
-    & tr:nth-child(even) {
+    & tr:nth-child(even) td, th{
         background-color: antiquewhite;
     }
 
-    & tr:nth-child(odd) {
+    & tr:nth-child(odd) td{
         background-color: #fff;
     }
 
@@ -128,7 +130,13 @@ body {
         padding: 15px;
         text-align: center;
     }
+
+    & thead, tbody, tr{
+        display: contents;
+    }
 }
+
+
 
 .article__advantages {
     background-color: #eee;
