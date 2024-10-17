@@ -1,4 +1,3 @@
-/* Общие стили */
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
 body {
@@ -13,20 +12,34 @@ body {
 .header {
     background-color: #444;
     color: white;
-    padding: 10px;
-    text-align: center;
+    padding: 0 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main {
+    margin: 100px 10px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
 }
 
 .header__nav ul {
     list-style: none;
-    line-height: normal;
-    padding: 0;
-    margin: 10px 0 0;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
 }
 
 .header__nav li {
     display: inline;
-    margin-right: 15px;
 }
 
 .header__nav a {
@@ -34,60 +47,61 @@ body {
     text-decoration: none;
     padding: 5px 10px;
     border-radius: 20px;
-}
 
-.header__nav a:hover {
-    background-color: #666;
-}
-
-/* Основная часть */
-.main {
-    padding: 20px;
+    &:hover {
+        background-color: #666;
+    }
 }
 
 .main__category {
-    background-color: #fff;
+    background-color: #eee;
     border: 2px solid #ddd;
-    margin-bottom: 20px;
-    padding: 10px;
+    padding: 0 10px;
     border-radius: 20px;
-}
 
-.main__category a {
-    color: black;
-    text-decoration: none;
-    padding: 2px 10px;
-}
+    & a {
+        color: black;
+        text-decoration: none;
+        padding: 3px 10px;
 
-.main__category a:hover {
-    background-color: #ddd;
-    border-radius: 20px;
+        &:hover {
+            background-color: #999;
+            border-radius: 20px;
+        }
+    }
+
+    & ul {
+        list-style-type: none;
+        padding-left: 10px;
+
+        & li {
+            padding-top: 5px;
+            font-size: 1.15rem;
+        }
+    }
 }
 
 .main__category-title {
     font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-ul {
-    padding-left: 30px;
 }
 
 .main__product {
     background-color: #fff;
     border: 2px solid #ddd;
     padding: 10px;
-    margin-bottom: 20px;
     border-radius: 20px;
+
+    & span {
+        font-style: italic;
+    }
 }
 
-.main__product span{
-    font-style: italic;
+.main__product, .aside__reviews {
+    flex: 1 1 45%;
 }
 
 .main__product-image {
     display: block;
-    margin-top: 10px;
     max-width: 100%;
     height: auto;
     border: 2px solid #ddd;
@@ -95,16 +109,38 @@ ul {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Преимущества */
-.article__advantages {
-    background-color: #f4f4f4;
-    border: 2px solid #ccc;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 20px;
+/* Адаптивная таблица */
+.table {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+    & tr:nth-child(even) {
+        background-color: antiquewhite;
+    }
+
+    & tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    & td, th {
+        border: 2px solid black;
+        border-radius: 5px;
+        padding: 15px;
+        text-align: center;
+    }
 }
 
-/* Отзывы */
+.article__advantages {
+    background-color: #eee;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 20px;
+
+    & span {
+        font-weight: bold;
+    }
+}
+
 .aside__reviews blockquote {
     border-left: 5px solid #ccc;
     padding-left: 10px;
@@ -112,40 +148,69 @@ ul {
     color: #666;
 }
 
-.aside__reviews {
-    margin-bottom: 20px;
-}
-
-.aside__reviews span{
-    text-decoration: underline red 3px;
-    text-transform: uppercase;
-}
-
-/* Карта */
 .main__map {
     background-color: #eee;
     padding: 10px;
     border-radius: 20px;
-    margin-bottom: 20px;
 }
 
-.main__map pre {
-    font-weight: bolder;
-    font-size: 15px;
-}
-
-/* Контакты */
 .main__contacts {
     background-color: #fff;
     border: 2px solid #ddd;
     padding: 10px;
     border-radius: 20px;
+
+    & ul {
+        padding-left: 10px;
+        list-style-type: none;
+
+        & li {
+            padding-bottom: 10px;
+        }
+    }
 }
 
-/* Подвал */
 .footer {
     background-color: #444;
     color: white;
     text-align: center;
     padding: 10px;
+}
+
+/* Адаптивные стили для разных экранов */
+@media screen and (max-width: 768px) {
+    .main__product, .aside__reviews {
+        flex: 1 1 100%;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .main {
+        margin: 130px 10px 10px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header__nav ul {
+        flex-direction: column;
+        text-align: right;
+    }
+
+    .header__nav li {
+        padding: 5px;
+    }
+
+    .main__map, .footer {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .main {
+        margin: 140px 10px 10px;
+    }
+
+    .header {
+        font-size: 0.9em;
+    }
 }
