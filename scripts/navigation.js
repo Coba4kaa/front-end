@@ -1,9 +1,9 @@
 (function() {
-    const currentPage = document.location.pathname.split('/').pop();
+    const currentPage = document.location.href;
     const navLinks = document.querySelectorAll('.header__nav a');
 
     navLinks.forEach(link => {
-        const linkPage = link.getAttribute('href').split('/').pop();
+        const linkPage = link.href;
 
         if (linkPage === currentPage) {
             link.classList.add('active');
