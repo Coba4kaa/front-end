@@ -7,6 +7,12 @@
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
+
+            if (!validateForm()) {
+                showNotification('Пожалуйста, заполните все поля корректно.');
+                return;
+            }
+
             const weekType = form.elements['weekType'].value;
             const maxClasses = parseInt(form.elements['maxClasses'].value);
             const language = form.elements['language'].value;
@@ -18,6 +24,40 @@
 
             generateTable(weekType, maxClasses, language, startTime, lessonDuration, breakDuration);
         });
+
+        function showNotification(message) {
+            let notification = document.querySelector('.notification');
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.classList.add('notification');
+                document.body.appendChild(notification);
+            }
+
+            notification.textContent = message;
+            notification.style.display = 'block';
+
+            setTimeout(function () {
+                notification.classList.add('hidden');
+                setTimeout(function () {
+                    notification.style.display = 'none';
+                    notification.classList.remove('hidden');
+                }, 500);
+            }, 3000);
+        }
+
+        function validateForm() {
+            const { weekType, maxClasses, language, startTime, lessonDuration, breakDuration } = form.elements;
+
+            if (!weekType.value || !maxClasses.value || !language.value || !startTime.value || !lessonDuration.value || !breakDuration.value) {
+                return false;
+            }
+
+            if (maxClasses.value < 1 || maxClasses.value > 10 || lessonDuration.value < 1 || breakDuration.value < 0) {
+                return false;
+            }
+
+            return /^([01]?[0-9]|2[0-3]):([0-5]?[0-9])$/.test(startTime.value);
+        }
 
         function saveSettings(weekType, maxClasses, language, startTime, lessonDuration, breakDuration) {
             localStorage.setItem('tableSettings', JSON.stringify({
@@ -87,6 +127,11 @@
                     const classCell = document.createElement('td');
                     classCell.textContent = '';
                     classCell.contentEditable = "true";
+
+                    classCell.addEventListener('blur', function () {
+                        saveTableData();
+                    });
+
                     row.appendChild(classCell);
                 }
                 tbody.appendChild(row);
@@ -94,6 +139,41 @@
 
             table.appendChild(tbody);
             tableContainer.appendChild(table);
+
+            loadTableData();
         }
+
+        function saveTableData() {
+            const table = tableContainer.querySelector('table');
+            const tableData = [];
+            const rows = table.querySelectorAll('tr');
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const rowData = [];
+                cells.forEach(cell => {
+                    rowData.push(cell.textContent);
+                });
+                if (rowData.length) {
+                    tableData.push(rowData);
+                }
+            });
+            localStorage.setItem('tableData', JSON.stringify(tableData));
+        }
+
+        function loadTableData() {
+            const savedTableData = JSON.parse(localStorage.getItem('tableData'));
+            if (savedTableData) {
+                const table = tableContainer.querySelector('table');
+                const rows = table.querySelectorAll('tr');
+                savedTableData.forEach((rowData, i) => {
+                    const cells = rows[i + 1].querySelectorAll('td');
+                    rowData.forEach((cellData, j) => {
+                        cells[j].textContent = cellData;
+                    });
+                });
+            }
+        }
+
+        loadTableData();
     });
 })();
