@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="интернет-магазин, ножи, продажа ножей, купить нож">
+    <meta name="description" content="Интернет-магазин по продаже ножей. Широкий ассортимент и отличные цены.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конструктор таблицы</title>
+    <link rel="stylesheet" href="../styles/table_constructor.css">
+    <script src="../scripts/table_constructor.js"></script>
+</head>
+
+<body>
+<header class="header">
+    <h1 class="header__title">Магазин финок НКВД</h1>
+    <nav class="header__nav">
+        <h3>Навигация</h3>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="cart.html">Корзина</a></li>
+            <li><a href="profile.html">Профиль</a></li>
+            <li><a href="self_presentation.html">О нас</a></li>
+            <li><a href="table_constructor.html">Конструктор таблиц</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="main">
+    <h1>Конструктор расписания занятий</h1>
+
+    <form id="tableForm">
+        <label for="weekType">Тип недели:</label>
+        <select id="weekType" name="weekType">
+            <option value="5">5-дневная</option>
+            <option value="6">6-дневная</option>
+        </select>
+
+        <label for="maxClasses">Максимальное количество занятий:</label>
+        <input type="number" id="maxClasses" name="maxClasses" min="1" max="10" value="6">
+
+        <label for="language">Язык таблицы:</label>
+        <select id="language" name="language">
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+        </select>
+
+        <label for="startTime">Время начала занятий:</label>
+        <input type="time" id="startTime" name="startTime" value="08:00">
+
+        <label for="lessonDuration">Длительность урока (мин):</label>
+        <input type="number" id="lessonDuration" name="lessonDuration" min="1" value="45">
+
+        <label for="breakDuration">Длительность перемены (мин):</label>
+        <input type="number" id="breakDuration" name="breakDuration" min="0" value="10">
+
+        <button type="submit">Создать таблицу</button>
+    </form>
+
+    <div id="tableContainer"></div>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2024 Магазин финок НКВД. Все права защищены.</p>
+</footer>
+
+</body>
+</html>
