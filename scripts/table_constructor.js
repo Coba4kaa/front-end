@@ -20,7 +20,14 @@
         });
 
         function saveSettings(weekType, maxClasses, language, startTime, lessonDuration, breakDuration) {
-            localStorage.setItem('tableSettings', JSON.stringify({ weekType, maxClasses, language, startTime, lessonDuration, breakDuration }));
+            localStorage.setItem('tableSettings', JSON.stringify({
+                weekType,
+                maxClasses,
+                language,
+                startTime,
+                lessonDuration,
+                breakDuration
+            }));
         }
 
         function loadSettings() {
@@ -79,6 +86,7 @@
                 for (let j = 0; j < maxClasses; j++) {
                     const classCell = document.createElement('td');
                     classCell.textContent = '';
+                    classCell.contentEditable = "true";
                     row.appendChild(classCell);
                 }
                 tbody.appendChild(row);
