@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const currentUserContainer = document.getElementById("current-user");
-    const suggestedUsersContainer = document.getElementById("suggested-users");
-    const preloaderProfile = document.getElementById("preloader-profile");
-    const preloaderSuggestions = document.getElementById("preloader-suggestions");
+    const currentUserContainer = document.querySelector("#user-profile-container");
+    const suggestedUsersContainer = document.querySelector("#suggested-users-container");
+    const preloaderProfile = document.querySelector("#preloader-profile");
+    const preloaderSuggestions = document.querySelector("#preloader-suggestions");
+    const profileTemplate = document.querySelector("#user-profile-template");
+    const suggestionTemplate = document.querySelector("#user-suggestion-template");
 
     const showError = (container, message) => {
         container.innerHTML = `<div class="error">⚠ ${message}</div>`;
@@ -23,19 +25,23 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error(error);
             showError(currentUserContainer, "Не удалось загрузить профиль.");
         } finally {
-            preloaderProfile.classList.add("hidden");
+            if (preloaderProfile) preloaderProfile.classList.add("hide");
         }
     };
 
     const renderCurrentUser = (user) => {
-        currentUserContainer.innerHTML = `
-            <h4>${user.name} (${user.username})</h4>
-            <p>Email: <a href="mailto:${user.email}">${user.email}</a></p>
-            <p>Phone: ${user.phone}</p>
-            <p>Website: <a href="http://${user.website}" target="_blank">${user.website}</a></p>
-            <p>Company: ${user.company.name}</p>
-            <p>Address: ${user.address.city}, ${user.address.street}</p>
-        `;
+        const userCard = profileTemplate.content.cloneNode(true);
+        userCard.querySelector(".user-name").textContent = `${user.name} (${user.username})`;
+        userCard.querySelector(".user-email").textContent = user.email;
+        userCard.querySelector(".user-email").href = `mailto:${user.email}`;
+        userCard.querySelector(".user-phone").textContent = user.phone;
+        userCard.querySelector(".user-website").textContent = user.website;
+        userCard.querySelector(".user-website").href = `http://${user.website}`;
+        userCard.querySelector(".user-company").textContent = user.company.name;
+        userCard.querySelector(".user-address").textContent = `${user.address.city}, ${user.address.street}`;
+
+        currentUserContainer.innerHTML = "";
+        currentUserContainer.appendChild(userCard);
     };
 
     const fetchSuggestedUsers = async () => {
@@ -52,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error(error);
             showError(suggestedUsersContainer, "Не удалось загрузить рекомендации.");
         } finally {
-            preloaderSuggestions.classList.add("hidden");
+            if (preloaderSuggestions) preloaderSuggestions.classList.add("hide");
         }
     };
 
@@ -62,12 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        suggestedUsersContainer.innerHTML = users.map(user => `
-            <div class="user-suggestion">
-                <h4>${user.name}</h4>
-                <p>${user.company.name}</p>
-            </div>
-        `).join("");
+        suggestedUsersContainer.innerHTML = "";
+        users.forEach((user) => {
+            const suggestionCard = suggestionTemplate.content.cloneNode(true);
+            suggestionCard.querySelector(".suggestion-name").textContent = user.name;
+            suggestionCard.querySelector(".suggestion-company").textContent = user.company.name;
+            suggestedUsersContainer.appendChild(suggestionCard);
+        });
     };
 
     fetchCurrentUser();

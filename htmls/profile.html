@@ -30,17 +30,17 @@
 </header>
 
 <main class="main">
-    <section class="main__profile">
-        <h3 class="main__profile-title">Ваш профиль</h3>
-        <div id="current-user" class="user-profile">
+    <section class="profile-section">
+        <h2>Профиль</h2>
+        <div id="user-profile-container" class="profile-container">
             <div id="preloader-profile" class="preloader">Загрузка профиля...</div>
         </div>
     </section>
 
-    <section class="main__suggestions">
-        <h3 class="main__profile-title">Возможно, вы знакомы</h3>
-        <div id="suggested-users" class="suggestions">
-            <div id="preloader-suggestions" class="preloader">Загрузка рекомендаций...</div>
+    <section class="suggestions-section">
+        <h2>Возможно вы знакомы:</h2>
+        <div id="suggested-users-container" class="suggestions-container">
+            <div id="preloader-suggestions" class="preloader">Загрузка предложений...</div>
         </div>
     </section>
 </main>
@@ -48,5 +48,23 @@
 <footer class="footer">
     <p>&copy; 2024 Магазин финок НКВД. Все права защищены.</p>
 </footer>
+
+<template id="user-profile-template">
+    <div class="user-profile-card">
+        <h4 class="user-name"></h4>
+        <p>Email: <a href="" class="user-email"></a></p>
+        <p>Phone: <span class="user-phone"></span></p>
+        <p>Website: <a href="" class="user-website" target="_blank"></a></p>
+        <p>Company: <span class="user-company"></span></p>
+        <p>Address: <span class="user-address"></span></p>
+    </div>
+</template>
+
+<template id="user-suggestion-template">
+    <div class="user-suggestion-card">
+        <h4 class="suggestion-name"></h4>
+        <p class="suggestion-company"></p>
+    </div>
+</template>
 </body>
 </html>
