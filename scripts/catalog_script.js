@@ -6,7 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
         customKnifeForm.classList.toggle('hidden');
     });
 
-    const pond = FilePond.create(document.querySelector('.filepond'));
+    const pond = FilePond.create(document.querySelector('.filepond'), {
+        allowFileTypeValidation: true,
+        acceptedFileTypes: ['image/*'],
+        allowedFileTypes: ['image/*'],
+        maxFileSize: '2MB',
+    });
+
+    setTimeout(() => {
+        const input = document.querySelector('.filepond input');
+        if (input) {
+            input.setAttribute('accept', 'image/*');
+        }
+    }, 1000);
 
     function fileToBase64(file) {
         return new Promise((resolve, reject) => {
@@ -32,12 +44,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
 
+    function isLocalStorageOverflowed(limitMB = 5) {
+        const totalSize = Object.keys(localStorage).reduce((total, key) => {
+            const value = localStorage.getItem(key);
+            return total + (value ? value.length : 0);
+        }, 0);
+        return (totalSize / (1024 * 1024)) > limitMB;
+    }
+
+    function isValidPhone(phone) {
+        const phonePattern = /^\d{11}$/;
+        return phonePattern.test(phone);
+    }
+
     customKnifeForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const knifeType = document.getElementById('knifeType').value;
         const handleMaterial = document.getElementById('handleMaterial').value;
         const phone = document.getElementById('phone').value;
+
+        if (!isValidPhone(phone)) {
+            showNotification('Номер телефона должен содержать ровно 11 цифр!', true);
+            return;
+        }
 
         const files = pond.getFiles();
         let fileData = null;
@@ -47,6 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!file.type.startsWith('image/')) {
                 showNotification('Файл должен быть изображением!', true);
+                return;
+            }
+
+            if (file.size > 2 * 1024 * 1024) {
+                showNotification('Размер файла не должен превышать 2 МБ!', true);
                 return;
             }
 
@@ -66,11 +101,24 @@ document.addEventListener('DOMContentLoaded', () => {
             fileData
         };
 
-        let orders = JSON.parse(localStorage.getItem('customKnifeOrders')) || [];
-        orders.push(orderData);
-        localStorage.setItem('customKnifeOrders', JSON.stringify(orders));
+        if (isLocalStorageOverflowed()) {
+            showNotification('Недостаточно места для сохранения заказа. Очистите хранилище.', true);
+            return;
+        }
 
-        showNotification(`Ваш заказ #${orderData.orderNumber} сохранен.`);
+        try {
+            let orders = JSON.parse(localStorage.getItem('customKnifeOrders')) || [];
+            orders.push(orderData);
+            localStorage.setItem('customKnifeOrders', JSON.stringify(orders));
+            showNotification(`Ваш заказ #${orderData.orderNumber} сохранен.`);
+        } catch (e) {
+            if (e instanceof DOMException && e.name === 'QuotaExceededError') {
+                showNotification('Переполнение хранилища. Очистите данные в браузере.', true);
+            } else {
+                console.error('Ошибка при записи в localStorage:', e);
+            }
+            return;
+        }
 
         customKnifeForm.reset();
         pond.removeFiles();
