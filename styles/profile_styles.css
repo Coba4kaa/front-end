@@ -73,3 +73,48 @@
 .hide {
     display: none;
 }
+
+.order-item {
+    max-width: 900px;
+    background-color: #f9f9f9;
+    border: 3px solid black;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.order-item img {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.order-item p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.cancel-button {
+    background-color: #C92300;
+    color: black;
+    border-radius: 4px;
+    padding: 5px 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: red;
+        transform: scale(1.05);
+    }
+
+    &:active {
+        background-color: brown;
+        transform: scale(0.95);
+    }
+}
