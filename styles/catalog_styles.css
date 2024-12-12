@@ -52,6 +52,11 @@ form input, form select, form button {
     transform: translateY(0);
 }
 
+#notification.error {
+    background-color: red;
+    color: white;
+}
+
 button {
     font: 1rem "Russo One";
     background-color: #999;

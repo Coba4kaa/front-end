@@ -22,16 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return orders.length ? Math.max(...orders.map(order => order.orderNumber || 0)) + 1 : 1;
     }
 
-    function showNotification(message) {
+    function showNotification(message, isError = false) {
         const notification = document.getElementById('notification');
         notification.textContent = message;
+        notification.classList.toggle('error', isError);
         notification.classList.add('show');
         setTimeout(() => {
             notification.classList.remove('show');
         }, 3000);
     }
 
-    // Обработка отправки формы
     customKnifeForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -43,10 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
         let fileData = null;
 
         if (files.length > 0) {
+            const file = files[0].file;
+
+            if (!file.type.startsWith('image/')) {
+                showNotification('Файл должен быть изображением!', true);
+                return;
+            }
+
             try {
-                fileData = await fileToBase64(files[0].file);
+                fileData = await fileToBase64(file);
             } catch (error) {
-                showNotification('Ошибка при загрузке файла');
+                showNotification('Ошибка при загрузке файла', true);
                 return;
             }
         }
