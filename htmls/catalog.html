@@ -8,8 +8,11 @@
     <title>Магазин финок НКВД</title>
     <link rel="stylesheet" href="../styles/catalog_styles.css">
     <link rel="stylesheet" href="../styles/main_page_styles.css">
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
     <script src="../scripts/load_statistics.js" defer></script>
     <script src="../scripts/navigation.js" defer></script>
+    <script type = "module" src="../scripts/catalog_script.js" defer></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 </head>
 <body>
 <!-- Шапка сайта -->
@@ -44,11 +47,33 @@
             увидеть, как будет выглядеть реальный контент. Используйте его для заполнения пустых блоков на странице.</p>
         <p>Этот текст является примером заполнителя для вашего веб-сайта. Он не несет смысловой нагрузки, но помогает
             увидеть, как будет выглядеть реальный контент. Используйте его для заполнения пустых блоков на странице.</p>
-        <p>Этот текст является примером заполнителя для вашего веб-сайта. Он не несет смысловой нагрузки, но помогает
-            увидеть, как будет выглядеть реальный контент. Используйте его для заполнения пустых блоков на странице.</p>
-        <p>Этот текст является примером заполнителя для вашего веб-сайта. Он не несет смысловой нагрузки, но помогает
-            увидеть, как будет выглядеть реальный контент. Используйте его для заполнения пустых блоков на странице.</p>
+        <button id="customKnifeButton">Сделать нож на заказ</button>
+        <form id="customKnifeForm" class="hidden">
+            <label for="knifeType">Тип ножа:</label>
+            <select id="knifeType" name="knifeType">
+                <option value="Охотничий">Охотничий</option>
+                <option value="Тактический">Тактический</option>
+                <option value="Кухонный">Кухонный</option>
+                <option value="Складной">Складной</option>
+            </select>
+
+            <label for="handleMaterial">Материал рукояти:</label>
+            <select id="handleMaterial" name="handleMaterial">
+                <option value="Дерево">Дерево</option>
+                <option value="Металл">Металл</option>
+                <option value="Пластик">Пластик</option>
+            </select>
+
+            <label for="phone">Ваш телефон:</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
+
+            <label for="file">Загрузите дизайн или гравировку:</label>
+            <input type="file" id="file" name="file" class="filepond" accept="image/*">
+
+            <button type="submit" id="orderButton">Заказать расчет</button>
+        </form>
     </div>
+    <div id="notification"></div>
 </main>
 
 <footer class="footer">
