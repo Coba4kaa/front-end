@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
 body {
     font-family: "Russo One", sans-serif;
     background-color: #f9f9f9;
-    margin: 0;
     padding: 0;
     color: #333;
 }
 
-/* Шапка */
 .header {
     background-color: #444;
     color: white;
@@ -23,6 +27,7 @@ body {
 }
 
 .main {
+    min-height: 100vh;
     margin: 100px 10px 10px 170px;
     display: flex;
     flex-wrap: wrap;
@@ -150,7 +155,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Адаптивная таблица */
 .table {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -176,8 +180,6 @@ body {
         display: contents;
     }
 }
-
-
 
 .article__advantages {
     background-color: #eee;
@@ -235,32 +237,36 @@ body {
 
 @media screen and (max-width: 600px) {
     .header {
-        flex-direction: column;
+        padding: 0;
     }
 
     .header__nav {
+        left: 0;
         position: relative;
         top: 0;
-        height: 30px;
+        height: auto;
         width: 100%;
         background-color: #666666;
         border-radius: 0;
         display: flex;
-        justify-content: center;
         flex-wrap: wrap;
-        margin-right: 30px;
-        padding-top: 10px;
+        padding: 10px 0;
     }
 
     .header__nav ul {
+        height: auto;
         flex-direction: row;
         width: auto;
         padding: 0;
         margin: 0;
+        display: flex;
+        flex-wrap: wrap;
     }
 
     .header__nav li {
-        margin: 0 5px;
+        flex: 1 1 10%;
+        padding: 5px 0;
+        line-height: 0.8;
     }
 
     .header__nav h3 {
@@ -272,33 +278,16 @@ body {
     }
 
     .main {
-        margin: 130px 10px 10px;
+        margin: 165px 10px 10px;
     }
 }
 
-
-@media screen and (max-width: 570px) {
-    .main__category{
-        display: none;
-    }
-
+@media screen and (max-width: 505px) {
     .main {
-        margin: 130px 10px 10px;
+        margin: 175px 10px 10px;
     }
-}
 
-@media screen and (max-width: 500px) {
     .main__map, .footer {
         display: none;
-    }
-}
-
-@media screen and (max-width: 430px) {
-    .main {
-        margin: 140px 10px 10px;
-    }
-
-    .header {
-        font-size: 0.9em;
     }
 }
