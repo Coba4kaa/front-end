@@ -18,8 +18,8 @@ body {
     width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: column; /* Вертикальное размещение */
-    align-items: center; /* Центрирование по горизонтали */
+    flex-direction: column;
+    align-items: center;
 }
 
 .main {
@@ -49,7 +49,7 @@ body {
         flex-direction: column;
         text-align: center;
         width: 140px;
-        height: 450px;
+        height: 350px;
     }
 
     & li{
@@ -67,6 +67,11 @@ body {
             background-color: #eee;
         }
     }
+}
+
+.active {
+    font-weight: bold;
+    background-color: #ddd;
 }
 
 .main__category {
