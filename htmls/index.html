@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="интернет-магазин, ножи, продажа ножей, купить нож">
     <meta name="description" content="Интернет-магазин по продаже ножей. Широкий ассортимент и отличные цены.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Магазин финок НКВД</title>
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/main_page_styles.css">
 </head>
 <body>
 <!-- Шапка сайта -->
 <header class="header">
     <h1 class="header__title">Магазин финок НКВД</h1>
     <nav class="header__nav">
+        <h3>Навигация</h3>
         <ul>
             <li><a href="index.html">Главная</a></li>
             <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="cart.html">Корзина</a></li>
+            <li><a href="profile.html">Профиль</a></li>
+            <li><a href="self_presentstion.html">О нас</a></li>
         </ul>
     </nav>
 </header>
@@ -37,14 +42,62 @@
         <h2>Наши товары</h2>
         <p>В нашем магазине вы найдете <strong>лучшие ножи</strong> от мировых производителей. Мы всегда стараемся
             предложить вам <em>высокое качество</em> по <span>доступным ценам</span>.</p>
-        <img class="main__product-image" src="../images/knife.webp" alt="Нож">
+        <div class="main__product-list">
+            <div class="product-item">
+                <img src="../images/knife.webp" alt="Нож 1">
+                <p>Нож 1</p>
+            </div>
+            <div class="product-item">
+                <img src="../images/knife.webp" alt="Нож 2">
+                <p>Нож 2</p>
+            </div>
+            <div class="product-item">
+                <img src="../images/knife.webp" alt="Нож 3">
+                <p>Нож 3</p>
+            </div>
+            <div class="product-item">
+                <img src="../images/knife.webp" alt="Нож 4">
+                <p>Нож 4</p>
+            </div>
+        </div>
     </section>
+
+    <section class="main__table">
+        <h4>Цены на ножи</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Модель</th>
+                <th>Цена</th>
+                <th>Рейтинг товара</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Финка НКВД</td>
+                <td>5000 руб</td>
+                <td>4.7</td>
+            </tr>
+            <tr>
+                <td>Охотничий нож</td>
+                <td>3500 руб</td>
+                <td>4.5</td>
+            </tr>
+            <tr>
+                <td>Кухонный нож</td>
+                <td>1200 руб</td>
+                <td>4.9</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
 
     <!-- Преимущества магазина -->
     <article class="article__advantages">
         <h4>Почему выбирают нас?</h4>
         <p>Мы предлагаем ножи с <strong>лучшими</strong> характеристиками. Наш ассортимент включает в себя не только
-            устаревшие модели, но и <ins>новейшие разработки</ins> в мире ножей.</p>
+            устаревшие модели, но и <span>новейшие разработки</span> в мире ножей.</p>
     </article>
 
     <!-- Отзывы покупателей -->
@@ -58,16 +111,16 @@
     <section class="main__map">
         <h4>Как до нас добраться:</h4>
         <pre>
-                +----+
-               /  #  |  #    +--> тут
-              /   #  |  #   /
-                     +-----+
+    +----+
+   /  #  |  #    +--> тут
+  /   #  |  #   /
+         +-----+
         </pre>
     </section>
 
     <!-- Контакты -->
     <section class="main__contacts">
-        <h4 class="main__contacts-title">Как с нами связаться</h4>
+        <h4 class="main__contacts-title">Как с нами связаться:</h4>
         <ul>
             <li>Телеграмм: @FinkiNKVD</li>
             <li>Номер телефона: 19-37</li>
