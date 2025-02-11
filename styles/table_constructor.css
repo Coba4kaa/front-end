@@ -1,0 +1,119 @@
+/* Стили для таблицы */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed;
+}
+
+.schedule-table th, .schedule-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.schedule-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+form input:focus, form select:focus {
+    outline: none;
+    border: 2px solid #333;
+    background-color: #f0f0f0;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+form {
+    width: 80%;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form input, form select {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin: 10px 0;
+    display: block;
+    box-sizing: border-box;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #444;
+    font-size: 0.9rem;
+}
+
+form input:focus, form select:focus {
+    outline: none;
+    border: 2px solid #333;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+form button {
+    padding: 12px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #555;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+form button:active {
+    background-color: #222;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+}
+
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+
+    form button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .schedule-table th, .schedule-table td {
+        width: auto;
+    }
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.notification.hidden {
+    opacity: 0;
+    display: none;
+}
+
